@@ -6,9 +6,24 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue').default;
-import ExampleComponent from './components/ExampleComponent';
+import Index from './Index.vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import VueRouter from 'vue-router';
+import router from './routes';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+import './../sass/_bootstrap-vue.scss';
+import Vue from 'vue';
+
+// Make BootstrapVue available throughout your project
+
+
+window.Vue = require('vue').default;
+Vue.use(VueRouter);
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,7 +45,8 @@ import ExampleComponent from './components/ExampleComponent';
 
 const app = new Vue({
     el: '#app',
+    router,
     components: {
-        ExampleComponent,
+        "index": Index,
     }
 });
